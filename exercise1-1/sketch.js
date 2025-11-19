@@ -1,6 +1,8 @@
 let sound1;
 let sound2;
 let sound3;
+let currentSound , amp;
+let amps = [];
 
 function preload()
 {
@@ -14,16 +16,41 @@ function preload()
 function setup()
 {
     createCanvas(600,600);
+    amp = new p5.Amplitude();
 
 }
 
 function draw()
 {
-    background(0);
-
+    background(255);
+    rectMode(CENTER)
+    ellipse(width/2,height/2, (amp.getLevel() * 500))
 }
 
-function mouseClicked()
+function keyPressed()
 {
-    sound1.play();
+    
+    
+    if (key === '1')
+    {
+        currentSound = sound1;
+    }
+    if (key === '2')
+    {
+        currentSound = sound2;
+    } 
+    if (key === '3')
+    {
+        currentSound = sound3; 
+    }
+
+    currentSound.stop();
+    amp.setInput(currentSound);
+    currentSound.play();
 }
+
+function mousePressed()
+{
+    currentSound.stop();
+}
+
