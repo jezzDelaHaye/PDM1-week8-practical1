@@ -10,11 +10,8 @@ function preload()
 }
 function draw()
 {
-    square(10,height/2,60)
-    square(90,height/2,60)
-    square(170,height/2,60)
-    square(250,height/2,60)
-    square(330,height/2,60)
+    drawSquares();
+    
 }
 
 function mousePressed() 
@@ -47,6 +44,34 @@ function mousePressed()
     {
         osc.freq(500);
         osc.start();
+    }
+}
+
+function drawSquares()
+{
+    let squares = 
+    {
+        sx: 10, 
+        sy: height/2,
+        size: 60,
+        lh: 175
+
+    }
+
+    for( let i = 0; i < 5; i++)
+    {
+        if (i === 0)
+        {
+            rect(squares.sx,squares.sy,squares.size)
+            line(squares.sx,squares.lh,(squares.sx + squares.size),squares.lh)
+        }
+        else 
+        {
+            rect((squares.sx + i*80),squares.sy,squares.size);
+            line((squares.sx + i*80),squares.lh,(squares.sx + i*80) + squares.size,squares.lh);
+        }
+
+        
     }
 }
 
