@@ -70,8 +70,6 @@ function drawSquares()
             rect((squares.sx + i*80),squares.sy,squares.size);
             line((squares.sx + i*80),squares.lh,(squares.sx + i*80) + squares.size,squares.lh);
         }
-
-        
     }
 }
 
